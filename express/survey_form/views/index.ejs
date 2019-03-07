@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dojo Survey</title>
+        <style>
+            div.container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+            }
+            input{
+                display:inline-block;
+            }
+            p{
+                display:inline-block;
+                width: 153px;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:236px;
+                margin-top: 10px;
+            }
+            textarea{
+                vertical-align: top;
+                width:282px;
+                height:100px;
+            }
+            h2 {
+                text-align: center;
+            }
+            select{
+                width:130px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = 'container'>
+            <form action='/result' method='post'>
+                <h2>DOJO SURVEY</h2>
+                <div>
+                    <p>Your Name:</p>
+                    <input type='text' name='name'> 
+                </div>
+                <div>
+                    <p>Dojo Location:</p>
+                    <select name='dojo'>
+                        <option value='San Jose'>San Jose</option>
+                        <option value='Seattle'>Seattle</option>
+                        <option value='New York'>New York</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Favorite Language:</p>
+                    <select name='lang'>
+                        <option value='Python'>Python</option>
+                        <option value='JavaScript'>JavaScript</option>
+                        <option value='C++'>C++</option>
+                    </select>
+                </div>
+                <p>Comment:</p> 
+                <textarea name='comment'></textarea>
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>

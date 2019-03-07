@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Details</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div>
+        <h1><%= cat.name %></h1>
+        <img src="<%= cat.pic %>" alt="cat1">
+        <h4>Favorite Food: </h4><p><%= cat.favFood %></p>
+        <h4>Age: </h4><p><%= cat.age %></p>
+        <h4>Sleeping Spots: </h4>
+        <% for (var x in cat.sleepingSpots) { %>
+            <p><%= cat.sleepingSpots[x] %></p>
+        <% } %>
+    </div>
+</body>
+</html>

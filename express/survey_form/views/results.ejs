@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submitted Info</title>
+    <style>
+        h2 {
+            text-decoration: underline;
+        }
+        .container {
+            width: 330px;
+            background-color: lightgrey;
+            padding: 10px;
+            margin: auto;
+        }
+        input[value='Go Back'] {
+            margin-left:270px;
+        }
+    </style>
+</head>
+<body>  
+    <div class='container'>
+        <h2>Submitted Info</h2>
+        <p><b>Name:</b> <%= x.name %></p>
+        <p><b>Dojo Location:</b> <%= x.dojo %></p>
+        <p><b>Favorite Language:</b> <%= x.lang %></p>
+        <p><b>Comment:</b> </p>
+        <p><%= x.comment %></p>
+        
+        <form action="/">
+            <input type="submit" value="Go Back" />
+        </form>
+    </div>
+</body>
+</html>

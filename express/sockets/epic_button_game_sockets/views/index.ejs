@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Epic Button Game</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                var socket = io();
+                socket.emit('connected');
+                socket.on('message', function (data) {
+                    $('#message').html("<h1>The button has been pushed " + JSON.stringify(data.response) + " time(s)</h1>");
+                });
+                $('#epic').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('epic');
+                    socket.on('message', function (data) {
+                        $('#message').html("<h1>The button has been pushed " + JSON.stringify(data.response) + " time(s)</h1>");
+                    });
+                });
+                $('#reset').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('reset');
+                    socket.on('message', function (data) {
+                        $('#message').html("<h1>The button has been pushed " + JSON.stringify(data.response) + " time(s)</h1>");
+                    });
+                });
+            });
+        </script>
+        <style>
+            .container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                margin-top: 10px;
+                text-align: center;
+                border-radius: 10px;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:236px;
+                margin-top: 10px;
+            }
+            h1 {
+                text-align: center;
+                color: teal;
+            }
+            #message {
+                text-align: center;
+            }
+            .epicbtn {
+                background-color: lightgreen;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 20px;
+            }
+            .resetbtn {
+                background-color: lightcoral;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 10px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="message"></div>
+        <div class = 'container'>
+            <form id='epic' method='post'>
+                <h2>Push the button to update the count!</h2>
+                <input class="epicbtn" type='submit' value='Push the Epic Button'>
+            </form>
+            <form id='reset' method='post'>
+                <input class="resetbtn" type='submit' value='Reset Count'>
+            </form>
+        </div>
+    </body>
+</html>

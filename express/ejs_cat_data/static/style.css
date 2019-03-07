@@ -1,0 +1,12 @@
+h1, h4 {
+    color: teal;
+}
+body {
+    text-align: center;
+}
+div {
+    margin: auto;
+    width: 350px;
+    background-color: lightgrey;
+    padding: 10px;
+}

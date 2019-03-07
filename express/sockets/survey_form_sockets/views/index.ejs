@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dojo Survey</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                var socket = io();
+
+                $('#form').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('formData', {
+                        name: $('#name').val(),
+                        dojo: $('#dojo').val(),
+                        lang: $('#lang').val(),
+                        comment: $('#comment').val(),
+                    });
+                    socket.on('message', function (data) {
+                        $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
+                    });
+                    socket.on('randomNumber', function (data) {
+                        $('#randomNumber').html("Your lucky number emitted by the server is " + JSON.stringify(data.response));
+                    });
+                });
+            });
+        </script>
+        <style>
+            div.container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                margin-top: 10px;
+            }
+            #message, #randomNumber {
+                width: 308px;
+                margin: auto;
+                /* padding: 10px; */
+                background-color: lightseagreen;
+            }
+            input{
+                display:inline-block;
+            }
+            p{
+                display:inline-block;
+                width: 153px;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:236px;
+                margin-top: 10px;
+            }
+            textarea{
+                vertical-align: top;
+                width:282px;
+                height:100px;
+            }
+            h2 {
+                text-align: center;
+            }
+            select{
+                width:130px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="message"></div>
+        <div id="randomNumber"></div>
+        <div class = 'container'>
+            <form id='form' method='post'>
+                <h2>DOJO SURVEY</h2>
+                <div>
+                    <p>Your Name:</p>
+                    <input id='name' type='text' name='name'> 
+                </div>
+                <div>
+                    <p>Dojo Location:</p>
+                    <select id='dojo' name='dojo'>
+                        <option value='San Jose'>San Jose</option>
+                        <option value='Seattle'>Seattle</option>
+                        <option value='New York'>New York</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Favorite Language:</p>
+                    <select id='lang' name='lang'>
+                        <option value='Python'>Python</option>
+                        <option value='JavaScript'>JavaScript</option>
+                        <option value='C++'>C++</option>
+                    </select>
+                </div>
+                <p>Comment:</p> 
+                <textarea id='comment' name='comment'></textarea>
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>

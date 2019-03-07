@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Group Chat</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                var name = prompt("Please enter your name");
+                var socket = io();
+                socket.emit('connected', {
+                    name: name,
+                    message: " *** JOINED THE CHAT! ***"
+                }); 
+                $('#send').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('sendMessage', {
+                        name: name,
+                        message: $('#sendMessage').val()
+                    });
+                    $('#sendMessage').val("");
+                });
+                socket.on('incomingMessage', function (data) {
+                    $('#allMessages').html("");
+                    for (messages in data.response) {
+                        $('#allMessages').append("<p><b>" +data.response[messages].name+ "</b>" + ": " + data.response[messages].message+ "</p>");
+                    }
+                    var textbox = document.getElementById('allMessages')
+                    textbox.scrollTop = textbox.scrollHeight;
+                });
+            });
+        </script>
+        <style>
+            .container {
+                width: 310px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                text-align: center;
+                border-radius: 10px;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:236px;
+                margin-top: 10px;
+            }
+            h1 {
+                text-align: center;
+                color: lightgray;
+                font-weight: normal;
+            }
+            .sendbtn {
+                background-color: teal;
+                padding: 7px;
+                border-radius: 10px;
+                font-size: 20px;
+                width: 100px;
+                margin-top: 10px;
+                /* float: right; */
+                margin-left: 200px;
+            }
+            #allMessages {
+                width: 290px;
+                height: 310px;
+                background-color: white;
+                margin-bottom: 10px;
+                text-align: left;
+                overflow-y:scroll;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .sendbox {
+                width: 305px;
+                border-radius: 5px;
+                padding-left: 5px;
+
+            }
+            body {
+                background-color:grey;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Conversation Board</h1>
+        <div class='container'>
+            <div id=allMessages></div>
+            <div class='sendMessage'>
+                <form id='send'>
+                    <input class="sendbox" type="text" id="sendMessage" placeholder="Enter your message here"></input>
+                    <input class="sendbtn" type='submit' value='Send'>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Real-Time Colors</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type ="text/javascript">
+            $(document).ready(function (){
+                var socket = io();
+                socket.emit('connected');
+                $('#green').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('green');
+                });
+                $('#blue').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('blue');
+                });
+                $('#pink').submit(function (data){
+                    data.preventDefault();
+                    socket.emit('pink');
+                });
+                socket.on('color', function(data) {
+                    $('body').attr("class", data.response);
+                });
+            });
+        </script>
+        <style>
+            .container {
+                width: 310px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                margin-top: 25%;
+                text-align: center;
+                border-radius: 10px;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:236px;
+                margin-top: 10px;
+            }
+            h1 {
+                text-align: center;
+                color: black;
+                font-weight: normal;
+            }
+            .greenbtn {
+                background-color: lightgreen;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 20px;
+                width: 100px;
+            }
+            .bluebtn {
+                background-color: lightblue;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 20px;
+                width: 100px;
+            }
+            .pinkbtn {
+                background-color: lightpink;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 20px;
+                width: 100px;
+            }
+            #green, #blue, #pink {
+                display: inline-block;
+            }
+            .lightpink {
+                background-color: lightpink;
+            }
+            .lightblue {
+                background-color: lightblue;
+            }
+            .lightgreen {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Click button to change background color!</h1>
+        <div class = 'container'>
+            <form id='green'>
+                <input class="greenbtn" type='submit' value='Green'>
+            </form>
+            <form id='blue'>
+                <input class="bluebtn" type='submit' value='Blue'>
+            </form>
+            <form id='pink'>
+                <input class="pinkbtn" type='submit' value='Pink'>
+            </form>
+        </div>
+    </body>
+</html>
