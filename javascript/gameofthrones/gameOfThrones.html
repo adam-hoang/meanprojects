@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Game of Thrones</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <style>
+            img {
+                height: 150px;
+                margin: 10px;
+                vertical-align: top;
+            }
+            .houses {
+                display: inline-block;
+            }
+            h1, h2, .details{
+                text-align: center;
+            }
+            #div1, #div2 {
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Game of Thrones</h1>
+        </div>
+            <div class="wrapper">      
+                <div class="houses">
+                    <img id="stark" src="img/stark.jpg">
+                </div>
+                <div class="houses">
+                    <img class="houses"  id="targaryen" src="img/targaryen.jpg">
+                </div>  
+                <div class="houses">
+                    <img class="houses"  id="lannister" src="img/lannister.jpg">
+                </div>
+                <div class="houses">
+                    <img class="houses"  id="baratheon" src="img/baratheon.png">
+                </div>
+            </div>
+            <div class="details">
+                <h2>House Details</h2>
+                <div id="info1"></div>
+                <div id="info2"></div>
+                <div id="info3"></div>
+            </div>
+        <script>        
+            $('#stark').click(function(){
+                $.ajax({
+                    method: "GET",
+                    url: "https://anapioficeandfire.com/api/houses/362",
+                    
+                })
+                $.get("https://anapioficeandfire.com/api/houses/362", function(res){
+                    $('p').show()
+                    var html_str = res.name;
+                    var html_str2 = res.words;
+                    var html_str3 = "";
+                    for (var i=0; i < res.titles.length-1; i++){
+                        html_str3 += (res.titles[i] + ", ");
+                    }
+                    html_str3 += "and " + res.titles[i];
+
+                    $("#info1").html("<b>Name: </b>" + html_str);
+                    $('#info2').html("<b>Words: </b>" + html_str2);
+                    $('#info3').html("<b>Titles: </b>" + html_str3)
+                }, 'json');
+            });
+
+            $('#targaryen').click(function(){
+                $.ajax({
+                    method: "GET",
+                    url: "https://anapioficeandfire.com/api/houses/378",
+                    
+                })
+                $.get("https://anapioficeandfire.com/api/houses/378", function(res){
+                    $('p').show()
+                    var html_str = res.name;
+                    var html_str2 = res.words;
+                    var html_str3 = "";
+                    for (var i=0; i < res.titles.length-1; i++){
+                        html_str3 += (res.titles[i] + ", ");
+                    }
+                    html_str3 += "and " + res.titles[i];
+
+                    $("#info1").html("<b>Name: </b>" + html_str);
+                    $('#info2').html("<b>Words: </b>" + html_str2);
+                    $('#info3').html("<b>Titles: </b>" + html_str3)
+                }, 'json');
+            });
+
+            $('#lannister').click(function(){
+                $.ajax({
+                    method: "GET",
+                    url: "https://anapioficeandfire.com/api/houses/229",
+                    
+                })
+                $.get("https://anapioficeandfire.com/api/houses/229", function(res){
+                    $('p').show()
+                    var html_str = res.name;
+                    var html_str2 = res.words;
+                    var html_str3 = "";
+                    for (var i=0; i < res.titles.length-1; i++){
+                        html_str3 += (res.titles[i] + ", ");
+                    }
+                    html_str3 += "and " + res.titles[i];
+
+                    $("#info1").html("<b>Name: </b>" + html_str);
+                    $('#info2').html("<b>Words: </b>" + html_str2);
+                    $('#info3').html("<b>Titles: </b>" + html_str3)
+                }, 'json');
+            });
+
+            $('#baratheon').click(function(){
+                $.ajax({
+                    method: "GET",
+                    url: "https://anapioficeandfire.com/api/houses/17",
+                    
+                })
+                $.get("https://anapioficeandfire.com/api/houses/17", function(res){
+                    $('p').show()
+                    var html_str = res.name;
+                    var html_str2 = res.words;
+                    var html_str3 = "";
+                    for (var i=0; i < res.titles.length-1; i++){
+                        html_str3 += (res.titles[i] + ", ");
+                    }
+                    html_str3 += "and " + res.titles[i];
+
+                    $("#info1").html("<b>Name: </b>" + html_str);
+                    $('#info2').html("<b>Words: </b>" + html_str2);
+                    $('#info3').html("<b>Titles: </b>" + html_str3)
+                }, 'json');
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    </body>
+</html>

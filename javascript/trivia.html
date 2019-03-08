@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .question {
+            height: 250px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            vertical-align: middle;
+            background-color: lightblue;
+            padding: 10px;
+        }
+        .header {
+            text-align: center;
+        }
+        label {
+            margin-left: 5px;
+        }
+        p, h3{
+            text-align: center;
+        }
+        input[type=radio] {
+            margin-left: 20px;
+        }
+        .points{
+            margin-top: 90px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Trivia Night</h1>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <h3>Animals</h3>
+                <div id="0" class="question">
+                    <p class="points">100</p>
+                </div>
+                <div id="1" class="question">
+                    <p class="points">200</p>
+                </div>
+                <div id="2" class="question">
+                    <p class="points">300</p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h3>Mythology</h3>
+                <div id="3" class="question">
+                    <p class="points">100</p>
+                </div>
+                <div id="4" class="question">
+                    <p class="points">200</p>
+                </div>
+                <div id="5" class="question">
+                    <p class="points">300</p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h3>History</h3>
+                <div id="6" class="question">
+                    <p class="points">100</p>
+                </div>
+                <div id="7" class="question">
+                    <p class="points">200</p>
+                </div>
+                <div id="8" class="question">
+                    <p class="points">300</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getQuestions(data) {
+            console.log(data);
+            console.log(data.results.length);
+            for (var i = 0; i < data.results.length; i++) {
+                questions.push(data.results[i].question);
+            }
+            for (var i = 0; i < data.results.length; i++) {
+                answers.push(data.results[i].correct_answer);
+                for (var j = 0; j < data.results[i].incorrect_answers.length; j++) {
+                    answers.push(data.results[i].incorrect_answers[j]);
+                }
+            }
+            console.log(questions);
+            console.log(answers);
+            return data;
+        }
+
+        var animals = $.get("https://opentdb.com/api.php?amount=3&category=27&difficulty=easy&type=multiple", getQuestions);
+        var mythology = $.get("https://opentdb.com/api.php?amount=3&category=20&difficulty=easy&type=multiple", getQuestions);
+        var history = $.get("https://opentdb.com/api.php?amount=3&category=23&difficulty=easy&type=multiple", getQuestions);
+        var questions = [];
+        var answers = [];
+
+        $("#0").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#1").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#2").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#3").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#4").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#5").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#6").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#7").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+        $("#8").click(function () {
+            $(this).html(
+                "<p>"+questions[$(this).attr("id")]+"</p>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+1]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+1]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+2]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+2]+"</label><br>"
+                +"<input type='radio' value='"+answers[4*parseInt($(this).attr("id"),10)+3]+"'><label>"+answers[4*parseInt($(this).attr("id"),10)+3]+"</label><br>"
+            );
+        });
+
+
+    </script>
+
+</body>
+
+</html>
