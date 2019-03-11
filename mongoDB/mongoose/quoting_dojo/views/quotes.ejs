@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    <style>
+        h2 {
+            text-decoration: underline;
+        }
+        .container {
+            width: 330px;
+            background-color: lightgrey;
+            padding: 10px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        input[value='Go Back'] {
+            margin-left:220px;
+            background-color: teal;
+            color:white;
+            padding: 5px;
+            width: 100px;
+            border-radius: 5px;
+        }
+        p {
+            color:gray;
+        }
+        .indent {
+            margin-left:30px;
+            color: teal;
+        }
+    </style>
+</head>
+<body>  
+    <div class='container'>
+        <h2>Here are some awesome quotes!</h2>
+        <% for (var i in quotes) { %>
+            <p>"<%= quotes[i].quote %>"</p>
+            <p class="indent">-<%= quotes[i].name %> at <%= quotes[i].updatedAt %></p>
+            <hr>
+        <% } %>
+        <form action="/">
+            <input type="submit" value="Go Back" />
+        </form>
+    </div>
+</body>
+</html>

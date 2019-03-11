@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Edit Cat</title>
+        <style>
+            div.container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                border-radius: 10px;
+            }
+            input{
+                display:inline-block;
+            }
+            p{
+                display:inline-block;
+                width: 153px;
+                color:teal;
+            }
+            input[type='submit']{
+                display:block;
+                margin-left:187px;
+                margin-top: 10px;
+                background-color: teal;
+                color:white;
+                padding: 5px;
+                width: 100px;
+                border-radius: 5px;
+            }
+            h2 {
+                text-align: center;
+                color:teal;
+            }
+            .errors {
+                color: red;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = 'container'>
+            <form action='/cats/<%= cat.id %>' method='post'>
+                <h2>Edit <%= cat.name %></h2>
+                <div>
+                    <p>Cat Name:</p>
+                    <input type='text' name='name' value='<%= cat.name %>'> 
+                </div>
+                <div>
+                    <p>Cat Breed:</p>
+                    <input type='text' name='breed' value='<%= cat.breed %>'> 
+                </div>
+                <div>
+                    <p>Cat Color:</p>
+                    <input type='text' name='color' value='<%= cat.color %>'> 
+                </div>
+                <input type='submit' value='Edit Cat'>
+            </form>
+        </div>
+        <div class="errors">
+            <% JSON.stringify(messages) %> 
+                <% if(messages.errorMsg) { %>
+                    <% for (var x of messages.errorMsg) { %>
+                    <h3><%= x %></h3>
+                <% } %>
+            <% } %>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Show Cat</title>
+</head>
+<style>
+    .container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+                border-radius: 10px;
+                text-align: center;
+            }
+</style>
+<body>
+    <div class="container">
+        <h1><%= cat.name %></h1>
+        <h4>Breed: </h4><p><%= cat.breed %></p>
+        <h4>Color: </h4><p><%= cat.color %></p>
+    </div>
+</body>
+</html>

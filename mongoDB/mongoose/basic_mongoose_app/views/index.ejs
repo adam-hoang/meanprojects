@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Basic Mongoose</title>
+        <style>
+            div.container {
+                width: 288px;
+                padding: 10px;
+                background-color: lightgray;
+                margin: auto;
+            }
+            input{
+                display:inline-block;
+            }
+            p{
+                display:inline-block;
+                width: 153px;
+                color:teal;
+            }
+            input[value='Submit']{
+                display:block;
+                margin-left:187px;
+                margin-top: 10px;
+                background-color: teal;
+                color:white;
+                padding: 10px;
+                width: 100px;
+            }
+            h2 {
+                text-align: center;
+                color:teal;
+            }
+            .users {
+                text-align: center;
+                width: 288px;
+                margin: auto;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="users">
+            <% for (var i in users) { %>
+                <p><b>Name:</b> <%= users[i].name %></p>
+                <p><b>Age:</b> <%= users[i].age %></p>
+                <hr>
+            <% } %>
+        </div>
+        <div class = 'container'>
+            <form action='/users' method='post'>
+                <h2>Basic Mongoose</h2>
+                <div>
+                    <p>Your Name:</p>
+                    <input type='text' name='name'> 
+                </div>
+                <div>
+                    <p>Age:</p>
+                    <input type='number' name='age'> 
+                </div>
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>
