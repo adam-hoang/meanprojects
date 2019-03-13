@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://vcc-na19.8x8.com/CHAT/common/html/chat-log.html -->
+<html lang="en" class="scrollable"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chat Log</title>
+    <link rel="stylesheet" href="./Chat Log_files/normalize.min.css">
+    <link rel="stylesheet" href="./Chat Log_files/embedded-chat.css">
+    <link rel="shortcut icon" href="https://vcc-na19.8x8.com/CHAT/common/img/favicon.ico">
+</head>
+<body class="scrollable">
+    <div class="log-container">
+        <div class="header">
+            <h1 class="title">Chat Log</h1>
+            <p class="description">Below is a complete log of the chat session.</p>
+            <hr class="separator">
+        </div>
+        <div class="content"><div class="chat-log-msg">You are now chatting with an agent.</div><div class="chat-outgoing-msg">hello</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span><div>Thank you for contacting HomeAway. My name is Justin. How may I help you?</div></div><div class="chat-outgoing-msg">hi justin</div><div class="chat-outgoing-msg">i have a reservation for a rental and i asked the owner to refund the payment so that i could use a different card for payment</div><div class="chat-outgoing-msg">you guys charged him some type of fee</div><div class="chat-outgoing-msg">i was wondering if u could remove that fee for him</div><div class="chat-outgoing-msg">he is such a nice guy to help me out</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Let me check it for you.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Could you please confirm your full name, email address and reservation ID so I could check your reservation details?</div><div class="chat-outgoing-msg">thank u so much justin</div><div class="chat-outgoing-msg">adam hoang</div><div class="chat-outgoing-msg">adamhoang712@yahoo.com</div><div class="chat-outgoing-msg">HA-37LH25</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Thank you for that.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>May I know how much is that fee?</div><div class="chat-outgoing-msg">he told me it was 150</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Did the owner refund you the full amount of the rental fee?</div><div class="chat-outgoing-msg">he refunded me 4564.10</div><div class="chat-outgoing-msg">and then i paid the same amount on my other card</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>And how much did you pay for the first payment using your other card?</div><div class="chat-outgoing-msg">we tried to do it so my reservation would not be cancelled, so i dont bel ieve it was the full amount of what i paid total</div><div class="chat-outgoing-msg">$4,321.00 Owner Fees $5,014.10 Cleaning Fee $300.00 Heated pool/spa $150.00 Ok use your other card now $4,564.10  Service Fee $324.00 Tax $421.30 Due on December 17, 2018 Paid $5,366.30 Refunded by owner -$4,564.10 Due on January 14, 2019 Paid $150.00 Due on January 29, 2019 Paid $4,564.10 Accidental Damage Protection (Purchased on December 17, 2018) Paid $79.00</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>That;s the reason why his&nbsp; still charged of $150 because he did not give you the full refund.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>If they give you a full refund, there will be no charged from them.</div><div class="chat-outgoing-msg">ok</div><div class="chat-outgoing-msg">thanks for clarifying that for me</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>This property you booked is using a pay per booking method which means homeaway has 8% commission on any successful booking of the property.&nbsp;</div><div class="chat-outgoing-msg">i wasnt sure because thats what he told me</div><div class="chat-outgoing-msg">maybe he forgot about the 150 that was a sperate payment</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Advised the owner to call us if he needs a further explanation about the $150.00.&nbsp;</div><div class="chat-outgoing-msg">"Just to let you know I lost about $150 on this changes. Vrbo charged me processing fee but it’s all good.</div><div class="chat-outgoing-msg">thats what he told me</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>It seems that it is the commission&nbsp; form Homeaway.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Are you still there?</div><div class="chat-outgoing-msg">yes</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>I hope I was able to help you. Would that be all for today?</div><div class="chat-outgoing-msg">so to sum things up</div><div class="chat-outgoing-msg">he did not get charged any extra money for helping me out?</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>That's correct. It is the commission from the remaining amount that he has not refunded.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Are you still there?</div><div class="chat-outgoing-msg">yes</div><div class="chat-outgoing-msg">thank u so much</div><div class="chat-outgoing-msg">u have a nice day</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>You're very much welcome.</div><div class="chat-incoming-msg"><span class="chat-msg-sender">Agent</span>Thank you for contacting HomeAway. You may end the chat now. Have an awesome day ahead!</div></div>
+    </div>
+
+    <script src="./Chat Log_files/jquery.min.js"></script>
+    <script>
+        (function(root) {
+            var opener = root.opener,
+                EmbeddedChat = opener.EmbeddedChat,
+                i18n = opener.i18n;
+
+            document.title = i18n.t("chatLogTitle");
+            $(".title").text(i18n.t("chatLogTitle"));
+            $(".description").text(i18n.t("chatLogDescription"));
+            $(".content").html(EmbeddedChat.chatWindow.getHtmlLog());
+        })(this);
+    </script>
+
+
+</body></html>
